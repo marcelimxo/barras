@@ -1,0 +1,11 @@
+{
+  "name": "barras",
+  "version": "1.0.0",
+  "description": "bot que dice \"barras\" para el server \"kosmivision\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "marcelim rondón",
+  "license": "ISC"
+}
