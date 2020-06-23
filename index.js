@@ -17,37 +17,24 @@ client.on("guildMemberAdd", (member) => {
 
 // barras
 client.on("message", (message) => {
-	// If the message is "ping"
-	if (
-		message.content === "sabes que" ||
-		message.content === "sabes qué?" ||
-		message.content === "hablale tú" ||
-		message.content === "sabes que?" ||
-		message.content === "di lo tuyo"
-	) {
-		// Send "pong" to the same channel
-		message.channel.send("**barras**");
-	} else if (message.content === "!periodt") {
-		message.channel.send("es así hermanx");
-	}
-});
-
-// vean mi avatar
-
-client.on("message", (message) => {
-	if (message.content === "quieren ver mi avatar") {
-		// Send the user's avatar URL
-		message.reply(message.author.displayAvatarURL());
-	}
-});
-
-client.on("message", (message) => {
-	// If the message is '!rip'
-	if (message.content === "!rip") {
-		// Create the attachment using MessageAttachment
-		const attachment = new MessageAttachment("https://i.imgur.com/w3duR07.png");
-		// Send the attachment in the message channel
-		message.channel.send(attachment);
+	switch (message) {
+		case "sabes que" || "sabes qué?" || "sabes que?" || "hablale tú" || "hablale tú vale" || "di lo tuyo":
+			message.channel.send("**barras**");
+			break;
+		case "!periodt":
+			message.channel.send("es así hermanx");
+			break;
+		case "quieren ver mi avatar":
+			message.channel.send(message.author.displayAvatarURL());
+			break;
+		case "!rip":
+			const attachment = new MessageAttachment("https://i.imgur.com/w3duR07.png");
+			// Send the attachment in the message channel
+			message.channel.send(attachment);
+			break;
+		default:
+			message.channel.send("_barras_");
+			break;
 	}
 });
 
