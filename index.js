@@ -64,7 +64,7 @@ client.on("message", (message) => {
 		}
 		return member
 			.kick({ reason: "Se comió la luz durísimo!" })
-			.then(() => message.reply(`epa ${member.user.tag} fue sacado del servidor. f por ${member.user.tag}`))
+			.then(() => message.reply(`epa ${member.user.username} fue sacado del servidor.`))
 			.catch((error) => message.reply(`mala mía`));
 	}
 });
