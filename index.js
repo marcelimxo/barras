@@ -8,7 +8,7 @@ client.on("ready", () => {
 
 client.on("guildMemberAdd", (member) => {
 	// Send the message to a designated channel on a server:
-	const channel = member.guild.channels.cache.find((ch) => ch.name === "member-log");
+	const channel = member.guild.channels.cache.find((ch) => ch.name === "mecanografía");
 	// Do nothing if the channel wasn't found on this server
 	if (!channel) return;
 	// Send the message, mentioning the member
@@ -17,23 +17,37 @@ client.on("guildMemberAdd", (member) => {
 
 // barras
 client.on("message", (message) => {
-	switch (message) {
-		case "sabes que" || "sabes qué?" || "sabes que?" || "hablale tú" || "hablale tú vale" || "di lo tuyo":
-			message.channel.send("**barras**");
-			break;
-		case "!periodt":
-			message.channel.send("es así hermanx");
-			break;
-		case "quieren ver mi avatar":
-			message.channel.send(message.author.displayAvatarURL());
-			break;
-		case "!rip":
-			const attachment = new MessageAttachment("https://i.imgur.com/w3duR07.png");
-			// Send the attachment in the message channel
-			message.channel.send(attachment);
-			break;
-		default:
-			break;
+	// If the message is "ping"
+	if (
+		message.content === "sabes que" ||
+		message.content === "sabes qué?" ||
+		message.content === "hablale tú" ||
+		message.content === "sabes que?" ||
+		message.content === "di lo tuyo"
+	) {
+		// Send "pong" to the same channel
+		message.channel.send("**barras**");
+	} else if (message.content === "!periodt") {
+		message.channel.send("es así hermanx");
+	}
+});
+
+// vean mi avatar
+
+client.on("message", (message) => {
+	if (message.content === "quieren ver mi avatar") {
+		// Send the user's avatar URL
+		message.reply(message.author.displayAvatarURL());
+	}
+});
+
+client.on("message", (message) => {
+	// If the message is '!rip'
+	if (message.content.startsWith("!rip")) {
+		// Create the attachment using MessageAttachment
+		const attachment = new MessageAttachment("https://i.imgur.com/w3duR07.png");
+		// Send the attachment in the message channel
+		message.channel.send(attachment);
 	}
 });
 
