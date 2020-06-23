@@ -33,7 +33,6 @@ client.on("message", (message) => {
 			message.channel.send(attachment);
 			break;
 		default:
-			message.channel.send("_barras_");
 			break;
 	}
 });
